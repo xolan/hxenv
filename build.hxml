@@ -1,0 +1,33 @@
+-D analyzer-module
+-neko build/neko/hxenv.n
+-main HXEnv
+-cp src
+-lib mcli
+
+--next
+
+-D analyzer-module
+-cpp build/cpp/
+-main HXEnv
+-cp src
+-lib mcli
+
+--next
+
+-D analyzer-module
+-java build/java/
+-main HXEnv
+-cp src
+-lib mcli
+
+--next
+
+-cmd mkdir -p bin/neko/
+-cmd mv build/neko/hxenv.n bin/neko/hxenv.n
+-cmd mkdir -p bin/cpp/
+-cmd mv build/cpp/HXEnv bin/cpp/hxenv
+-cmd mkdir -p bin/java/
+-cmd mv build/java/HXEnv.jar bin/java/hxenv.jar
+
+-cmd echo '---[ Test run ]---'
+-cmd neko bin/neko/hxenv.n

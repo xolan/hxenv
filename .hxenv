@@ -1,0 +1,12 @@
+{
+    "libs": [
+        {
+            "name": "hxcpp",
+            "version": "3.3.49"
+        },
+        {
+            "name": "mcli",
+            "version": "0.1.6"
+        }
+    ]
+}
