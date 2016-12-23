@@ -1,6 +1,8 @@
 # hxenv
 
-Simple tool to set haxelib libraries' versions as defined in ./.hxenv
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
+
+Simple tool to set haxelib libraries' versions as defined in `./.hxenv`
 
 ## Usage
 
