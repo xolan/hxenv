@@ -14,6 +14,8 @@ For additional information, see `hxenv --help`.
 
 ## .hxenv structure
 
+Note this is strict JSON.
+
 ```json
 {
     "libs": [
@@ -23,4 +25,21 @@ For additional information, see `hxenv --help`.
         }
     ]
 }
+```
+
+## Building
+
+Dependencies: haxe, haxelib
+
+Libraries: hxcpp, hxjava, mcli
+
+```bash
+# If you already have a version of hxenv installed
+hxenv --use
+haxe build.hxml
+# Else, check versions in .hxenv
+haxelib install hxcpp <version>
+haxelib install hxjava <version>
+haxelib install mcli <version>
+haxe build.hxml
 ```
