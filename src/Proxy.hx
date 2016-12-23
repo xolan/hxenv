@@ -4,6 +4,7 @@ class Proxy {
     public static function list() {
         var p = new sys.io.Process('haxelib', ['list']);
         var output = p.stdout.readAll().toString();
+        p.close();
         return output;
     }
 
@@ -11,14 +12,17 @@ class Proxy {
         var p = new sys.io.Process('haxelib', ['set', name, version]);
         var output = p.stdout.readAll().toString();
         var err = p.stderr.readAll().toString();
+        var retVal = false;
         if (p.exitCode() == 0) {
-            return true;
+            retVal = true;
         } else {
             if (err != "") {
                 IO.printErr(err);
             }
-            return false;
+            retVal = false;
         }
+        p.close();
+        return retVal;
     }
 
     public static function install(name:String, ?version:String):Bool {
@@ -30,13 +34,16 @@ class Proxy {
         }
         var output = p.stdout.readAll().toString();
         var err = p.stderr.readAll().toString();
+        var retVal = false;
         if (p.exitCode() == 0) {
-            return true;
+            retVal = true;
         } else {
             if (err != "") {
                 IO.printErr(err);
             }
-            return false;
+            retVal = false;
         }
+        p.close();
+        return retVal;
     }
 }
