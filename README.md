@@ -22,6 +22,10 @@ Note this is strict JSON.
         {
             "name": "hxcpp",
             "version": "3.3.49"
+        },
+        {
+            "name": "heaps",
+            "version": "https://github.com/HeapsIO/heaps.git"
         }
     ]
 }
