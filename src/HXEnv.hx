@@ -4,6 +4,7 @@ import IO;
 /**
     Simple tool to set haxelib libraries' versions as defined in ./.hxenv
 **/
+using StringTools;
 class HXEnv extends mcli.CommandLine {
     /**
         Show this message.
@@ -112,13 +113,13 @@ class HXEnv extends mcli.CommandLine {
                 for (dl in definedLibs) {
                     if (il.name == dl.name) {
                         IO.printOk('Found ' + il);
-                        if (il.current == dl.version) {
+                        if ( (il.current == dl.version) || (il.current == 'git' && cast (dl.version, String).endsWith('.git')) ) {
                             IO.printOk('  Correct version (${il.current})');
                         } else {
                             IO.printWarning('  Wrong version (${il.current} != ${dl.version})');
                             var setVersionOk = Run.step6__setVersion(dl.name, dl.version);
                             if (!setVersionOk) {
-                                IO.printOk('  Installing version (${dl.version})');
+                                IO.printWarning('  Installing version (${dl.version})');
                                 var installOk = Run.step6_2_install(dl.name, dl.version);
                                 if (installOk) {
                                     IO.printOk('  Installed version (${dl.version})');

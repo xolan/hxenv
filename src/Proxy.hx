@@ -10,12 +10,17 @@ class Proxy {
     }
 
     public static function setVersion(name:String, version:String):Bool {
-        var p = new sys.io.Process('haxelib', ['set', '--never', name, version]);
+        var p:sys.io.Process;
+        if (version.endsWith(".git")) {
+            p = new sys.io.Process('haxelib', ['set', '--never', name, 'git']);
+        } else {
+            p = new sys.io.Process('haxelib', ['set', '--never', name, version]);
+        }
         var output = p.stdout.readAll().toString();
         var err = p.stderr.readAll().toString();
         var retVal = false;
         if (p.exitCode() == 0
-            && !output.trim().endsWith(name + " version " + version + " is not installed")) {
+            && !output.trim().endsWith("is not installed")) {
             retVal = true;
         } else {
             if (err != "") {
