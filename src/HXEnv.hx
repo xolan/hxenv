@@ -118,6 +118,7 @@ class HXEnv extends mcli.CommandLine {
                             IO.printWarning('  Wrong version (${il.current} != ${dl.version})');
                             var setVersionOk = Run.step6__setVersion(dl.name, dl.version);
                             if (!setVersionOk) {
+                                IO.printOk('  Installing version (${dl.version})');
                                 var installOk = Run.step6_2_install(dl.name, dl.version);
                                 if (installOk) {
                                     IO.printOk('  Installed version (${dl.version})');
@@ -125,7 +126,7 @@ class HXEnv extends mcli.CommandLine {
                                     if (!setVersionOk2) {
                                         IO.printErr('    Error setting $dl');    
                                     } else {
-                                        IO.printOk('  Set version (${il.current})');
+                                        IO.printOk('  Set version (${dl.version})');
                                     }
                                 } else {
                                     IO.printErr('    Error installing $dl');
